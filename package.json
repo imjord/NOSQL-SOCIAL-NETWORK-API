@@ -1,0 +1,25 @@
+{
+  "name": "nosql-social-network-api",
+  "version": "1.0.0",
+  "description": "Challenge to create a social network with comments, replies, reactions, and users.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imjord/NOSQL-SOCIAL-NETWORK-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imjord/NOSQL-SOCIAL-NETWORK-API/issues"
+  },
+  "homepage": "https://github.com/imjord/NOSQL-SOCIAL-NETWORK-API#readme"
+}
