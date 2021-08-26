@@ -1,13 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const userRoute = require("./routes/user-routes");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // middle ware 
-app.use(express.json());
+app.use(express.json()); // parse post reqwust 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
+
 
 
 
@@ -21,9 +23,12 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/social-netboi",
 mongoose.set("debug", true);
 
 
-app.get("/" ,(req,res) => {
-    res.json("hello")
-})
+
+// routes 
+
+app.use("/api/users", userRoute);
+
+
 
 app.listen(PORT, () => 
 console.log(`Now listening on ${PORT}` ))
