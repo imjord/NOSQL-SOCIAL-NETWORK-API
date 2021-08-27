@@ -8,8 +8,8 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: true,
-        min: 3,
-        max: 20,
+        minLength: 3,
+        maxLength: 20,
         unique: true,
         trim: true
     },
@@ -17,7 +17,7 @@ const UserSchema = new Schema({
        type: String,
         required: true,
         trim: true,
-        max: 50,
+        maxLength: 50,
         unique: true
     },
     thoughts: {
