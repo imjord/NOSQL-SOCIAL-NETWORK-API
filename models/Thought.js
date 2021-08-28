@@ -24,3 +24,7 @@ const ThoughtSchema = new Schema({
 
     }
 })
+
+
+
+module.exports = model("Thought", ThoughtSchema);

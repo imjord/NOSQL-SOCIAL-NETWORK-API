@@ -29,7 +29,10 @@ const UserSchema = new Schema({
     }
 },
 {timestamps:true}
+// add virtual
 )
+
+
 
 
 module.exports = model("User", UserSchema);
