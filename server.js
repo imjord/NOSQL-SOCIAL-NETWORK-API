@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/user-routes");
+const thoughtRoute = require("./routes/thought-routes");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -28,7 +29,7 @@ mongoose.set("debug", true);
 
 app.use("/api/users", userRoute);
 
-
+app.use("/api/thought", thoughtRoute);
 
 app.listen(PORT, () => 
 console.log(`Now listening on ${PORT}` ))

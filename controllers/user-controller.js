@@ -1,11 +1,11 @@
-const {User} = require("../models/User");
+const {User, Thought } = require("../models");
 
 
 
 const userController = {
     // get all users
     getAllUsers(req,res) {
-        User.find({})
+        User.find()
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
@@ -14,8 +14,14 @@ const userController = {
         },
 
     // get user by id 
-    getUserById({ params}, res){
-        User.findOne({_id: params.id })
+    getUserById(req, res){
+        User.findOne({_id: req.params.id })
+        .populate({
+          path: 'thoughts', 
+          })
+          .populate({
+            path: 'friends',
+          })
         .then(dbUserData => {
             if(!dbUserData){
                 res.status(404).json({ message: " No user with this id!! "});
@@ -29,14 +35,14 @@ const userController = {
         })
     },
     // createUser
-    createUser({ body }, res) {
-    User.create(body)
+    createUser(req, res) {
+    User.create(req.body)
       .then(dbUserData => res.json(dbUserData))
       .catch(err => res.status(400).json(err));
   },
     // update User by id
-    updateUser({ params, body }, res) {
-    User.findOneAndUpdate({ _id: params.id }, body, { new: true })
+    updateUser(req, res) {
+    User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
       .then(dbUserData => {
         if (!dbUserData) {
           res.status(404).json({ message: 'No User found with this id!' });
@@ -47,12 +53,12 @@ const userController = {
       .catch(err => res.status(400).json(err));
   },
   // delete User
-    deleteUser({ params }, res) {
-    User.findOneAndDelete({ _id: params.id })
+    deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.id })
       .then(dbUserData => {
         if (!dbUserData) {
           res.status(404).json({ message: 'No User found with this id!' });
-          return;
+          return Thought.deleteMany({_id: dbUserData.thoughts});
         }
         res.json(dbUserData);
       })
