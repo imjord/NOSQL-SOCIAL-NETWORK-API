@@ -1,5 +1,6 @@
 const { model, Schema } = require("mongoose");
 const User = require("./User")
+const Reaction = require("./Reaction");
 
 
 
@@ -20,7 +21,8 @@ const ThoughtSchema = new Schema({
         required: true
     },
     reactions: {
-        // array of nested documents from reaction schema 
+        // // array of nested documents from reaction schema 
+        // ref: "Reaction"
 
     }
 })

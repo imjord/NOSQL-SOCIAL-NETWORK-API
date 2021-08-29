@@ -1,4 +1,5 @@
 const { model, Schema, Mongoose } = require("mongoose");
+const Thoughts = require("./Thought");
 
 
 
@@ -20,9 +21,12 @@ const UserSchema = new Schema({
         maxLength: 50,
         unique: true
     },
-    thoughts: {
-        type: Array
-    },
+    thoughts: [{
+        type: Schema.Types.ObjectId,
+        ref: "Thought"
+    
+        
+    }],
     friends: {
         type: Array,
         default: []
