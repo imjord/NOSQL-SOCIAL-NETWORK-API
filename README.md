@@ -15,6 +15,8 @@ Challenge to create a social network with thoughts, reactions, and users.
 
   # About -
 
+  [!imageOfProject](./Capture.png)
+
   #### GitHub User: imjord
 
   #### User Email: NA
